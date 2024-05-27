@@ -58,7 +58,7 @@ int fordFulkerson(int** graph, int s, int t, int V) {
             rGraph[u][v] -= path_flow;
             rGraph[v][u] += path_flow;
         }
-
+        
         max_flow += path_flow;
     }
 
@@ -87,12 +87,14 @@ int main() {
     sources = (int*)malloc(num_sources * sizeof(int));
     for (int i = 0; i < num_sources; i++) {
         fscanf(file, "%d", &sources[i]);
+        sources[i] -= 1;
     }
 
     fscanf(file, "%d", &num_sinks);
     sinks = (int*)malloc(num_sinks * sizeof(int));
     for (int i = 0; i < num_sinks; i++) {
         fscanf(file, "%d", &sinks[i]);
+        sinks[i] -= 1;
     }
 
     int** graph = (int**)malloc((V + 2) * sizeof(int*));
@@ -103,7 +105,7 @@ int main() {
     for (int i = 0; i < E; i++) {
         int u, v, cap;
         fscanf(file, "%d %d %d", &u, &v, &cap);
-        graph[u][v] = cap;
+        graph[u-1][v-1] = cap;
     }
 
     fclose(file);
