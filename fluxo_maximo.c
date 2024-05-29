@@ -173,3 +173,7 @@ int main() {
 
     return 0;
 }
+
+// gcc fluxo_maximo.c -o fluxo_maximo
+//./fluxo_maximo
+
